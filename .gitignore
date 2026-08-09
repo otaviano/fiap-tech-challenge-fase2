@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Resultados / logs (mantém a pasta, ignora artefatos pesados)
+results/**/*.json
+results/**/*.csv
+results/**/*.log
+results/**/*.png
+!results/.gitkeep
+
+# Terraform
+infra/**/.terraform/
+infra/**/*.tfstate
+infra/**/*.tfstate.*
+infra/**/.terraform.lock.hcl
+
+# Segredos
+.env
+*.key
+*.pem
+
+# SO / editores
+.DS_Store
+.idea/
+.vscode/
