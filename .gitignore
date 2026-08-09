@@ -1,3 +1,11 @@
+# Materiais do curso (não são entregáveis; um deles tem marca d'água pessoal)
+IADT - Fase 2 - Tech challenge*.pdf
+Capítulo de Projeto*.pdf
+
+# Cobertura de testes
+.coverage
+htmlcov/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -14,12 +22,15 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Resultados / logs (mantém a pasta, ignora artefatos pesados)
-results/**/*.json
-results/**/*.csv
+# Resultados / logs (mantém a pasta, ignora artefatos pesados e transitórios)
 results/**/*.log
 results/**/*.png
+results/*.out
+results/run_*.json
 !results/.gitkeep
+# Evidências consolidadas dos experimentos SÃO versionadas (reprodutibilidade)
+!results/experiments_summary.json
+!results/gb_rf_comparison.json
 
 # Terraform
 infra/**/.terraform/

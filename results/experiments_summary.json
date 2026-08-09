@@ -1,0 +1,654 @@
+{
+  "model": "SVM",
+  "dataset": {
+    "n_amostras": 569,
+    "n_features": 30,
+    "distribuicao": {
+      "maligno": 212,
+      "benigno": 357
+    }
+  },
+  "experiments": [
+    {
+      "name": "baseline_ga",
+      "model_name": "SVM",
+      "ga_result": {
+        "model_name": "SVM",
+        "config": {
+          "population_size": 20,
+          "generations": 15,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.15,
+          "elitism": 2,
+          "tournament_size": 3,
+          "selection": "tournament",
+          "crossover": "uniform",
+          "seed": 42
+        },
+        "best_chromosome": {
+          "C": 2.606835083153345,
+          "gamma": 0.03363383896644277,
+          "kernel": "rbf"
+        },
+        "best_fitness": 0.9726343752440832,
+        "best_metrics": {
+          "recall": 0.9669988925802879,
+          "f1": 0.9761262553802009,
+          "roc_auc": 0.9959716308185028
+        },
+        "n_evaluations": 99,
+        "elapsed_seconds": 9.184788088008645,
+        "history": [
+          {
+            "generation": 0,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.5492493507505402
+          },
+          {
+            "generation": 1,
+            "best_fitness": 0.9680976665363084,
+            "mean_fitness": 0.8263705814810021
+          },
+          {
+            "generation": 2,
+            "best_fitness": 0.9680976665363084,
+            "mean_fitness": 0.7674672281159889
+          },
+          {
+            "generation": 3,
+            "best_fitness": 0.9680976665363084,
+            "mean_fitness": 0.8848201479203401
+          },
+          {
+            "generation": 4,
+            "best_fitness": 0.9680976665363084,
+            "mean_fitness": 0.9228184026655241
+          },
+          {
+            "generation": 5,
+            "best_fitness": 0.9680976665363084,
+            "mean_fitness": 0.8735348741191864
+          },
+          {
+            "generation": 6,
+            "best_fitness": 0.9680976665363084,
+            "mean_fitness": 0.7765605279305458
+          },
+          {
+            "generation": 7,
+            "best_fitness": 0.9680976665363084,
+            "mean_fitness": 0.8652994380699992
+          },
+          {
+            "generation": 8,
+            "best_fitness": 0.9726343752440832,
+            "mean_fitness": 0.8662394704856584
+          },
+          {
+            "generation": 9,
+            "best_fitness": 0.9726343752440832,
+            "mean_fitness": 0.8399407340183448
+          },
+          {
+            "generation": 10,
+            "best_fitness": 0.9726343752440832,
+            "mean_fitness": 0.8103497201259457
+          },
+          {
+            "generation": 11,
+            "best_fitness": 0.9726343752440832,
+            "mean_fitness": 0.827504385790459
+          },
+          {
+            "generation": 12,
+            "best_fitness": 0.9726343752440832,
+            "mean_fitness": 0.9164870187083682
+          },
+          {
+            "generation": 13,
+            "best_fitness": 0.9726343752440832,
+            "mean_fitness": 0.8988992995753732
+          },
+          {
+            "generation": 14,
+            "best_fitness": 0.9726343752440832,
+            "mean_fitness": 0.8634705103803542
+          }
+        ]
+      },
+      "baseline_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 1.0,
+          "kernel": "rbf",
+          "gamma": "scale"
+        },
+        "metrics": {
+          "accuracy": 0.9824561403508771,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9761904761904762,
+          "f1_maligno": 0.9761904761904762,
+          "roc_auc": 0.9950396825396826
+        },
+        "false_negatives": 1,
+        "false_positives": 1
+      },
+      "optimized_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 2.606835083153345,
+          "gamma": 0.03363383896644277,
+          "kernel": "rbf"
+        },
+        "metrics": {
+          "accuracy": 0.9736842105263158,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9534883720930233,
+          "f1_maligno": 0.9647058823529412,
+          "roc_auc": 0.9970238095238095
+        },
+        "false_negatives": 1,
+        "false_positives": 2
+      }
+    },
+    {
+      "name": "high_mutation",
+      "model_name": "SVM",
+      "ga_result": {
+        "model_name": "SVM",
+        "config": {
+          "population_size": 20,
+          "generations": 15,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.35,
+          "elitism": 2,
+          "tournament_size": 3,
+          "selection": "tournament",
+          "crossover": "uniform",
+          "seed": 42
+        },
+        "best_chromosome": {
+          "C": 12.459139707606937,
+          "gamma": 0.005026348333842722,
+          "kernel": "rbf"
+        },
+        "best_fitness": 0.9654651531244343,
+        "best_metrics": {
+          "recall": 0.9575858250276855,
+          "f1": 0.97107588834992,
+          "roc_auc": 0.9959089160284705
+        },
+        "n_evaluations": 154,
+        "elapsed_seconds": 9.269346954999492,
+        "history": [
+          {
+            "generation": 0,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.5492493507505402
+          },
+          {
+            "generation": 1,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.7704064505781938
+          },
+          {
+            "generation": 2,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.7303346770174599
+          },
+          {
+            "generation": 3,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.8456517829183376
+          },
+          {
+            "generation": 4,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.7862198630552323
+          },
+          {
+            "generation": 5,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.7839099512932669
+          },
+          {
+            "generation": 6,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.7328462177821383
+          },
+          {
+            "generation": 7,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.6588225328829971
+          },
+          {
+            "generation": 8,
+            "best_fitness": 0.9654651531244343,
+            "mean_fitness": 0.7286588567813375
+          },
+          {
+            "generation": 9,
+            "best_fitness": 0.9654651531244343,
+            "mean_fitness": 0.7662015017378304
+          },
+          {
+            "generation": 10,
+            "best_fitness": 0.9654651531244343,
+            "mean_fitness": 0.7194512930956558
+          },
+          {
+            "generation": 11,
+            "best_fitness": 0.9654651531244343,
+            "mean_fitness": 0.7250143101516507
+          },
+          {
+            "generation": 12,
+            "best_fitness": 0.9654651531244343,
+            "mean_fitness": 0.7411908892425756
+          },
+          {
+            "generation": 13,
+            "best_fitness": 0.9654651531244343,
+            "mean_fitness": 0.7386598016166634
+          },
+          {
+            "generation": 14,
+            "best_fitness": 0.9654651531244343,
+            "mean_fitness": 0.8386605248244461
+          }
+        ]
+      },
+      "baseline_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 1.0,
+          "kernel": "rbf",
+          "gamma": "scale"
+        },
+        "metrics": {
+          "accuracy": 0.9824561403508771,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9761904761904762,
+          "f1_maligno": 0.9761904761904762,
+          "roc_auc": 0.9950396825396826
+        },
+        "false_negatives": 1,
+        "false_positives": 1
+      },
+      "optimized_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 12.459139707606937,
+          "gamma": 0.005026348333842722,
+          "kernel": "rbf"
+        },
+        "metrics": {
+          "accuracy": 0.9824561403508771,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9761904761904762,
+          "f1_maligno": 0.9761904761904762,
+          "roc_auc": 0.996031746031746
+        },
+        "false_negatives": 1,
+        "false_positives": 1
+      }
+    },
+    {
+      "name": "large_population",
+      "model_name": "SVM",
+      "ga_result": {
+        "model_name": "SVM",
+        "config": {
+          "population_size": 40,
+          "generations": 10,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.15,
+          "elitism": 2,
+          "tournament_size": 3,
+          "selection": "tournament",
+          "crossover": "uniform",
+          "seed": 42
+        },
+        "best_chromosome": {
+          "C": 30.95258856631221,
+          "gamma": 0.002798593480044962,
+          "kernel": "rbf"
+        },
+        "best_fitness": 0.9654717668810481,
+        "best_metrics": {
+          "recall": 0.9575858250276855,
+          "f1": 0.97107588834992,
+          "roc_auc": 0.9959750535946081
+        },
+        "n_evaluations": 156,
+        "elapsed_seconds": 9.605284740988282,
+        "history": [
+          {
+            "generation": 0,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.6421178101004885
+          },
+          {
+            "generation": 1,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.780546136557944
+          },
+          {
+            "generation": 2,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.9157906793978265
+          },
+          {
+            "generation": 3,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.8963795997380549
+          },
+          {
+            "generation": 4,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.8403279575669667
+          },
+          {
+            "generation": 5,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.8463996162423305
+          },
+          {
+            "generation": 6,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.8839291120443299
+          },
+          {
+            "generation": 7,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.7780988248922519
+          },
+          {
+            "generation": 8,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.8825354976926739
+          },
+          {
+            "generation": 9,
+            "best_fitness": 0.9654717668810481,
+            "mean_fitness": 0.9302777935572795
+          }
+        ]
+      },
+      "baseline_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 1.0,
+          "kernel": "rbf",
+          "gamma": "scale"
+        },
+        "metrics": {
+          "accuracy": 0.9824561403508771,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9761904761904762,
+          "f1_maligno": 0.9761904761904762,
+          "roc_auc": 0.9950396825396826
+        },
+        "false_negatives": 1,
+        "false_positives": 1
+      },
+      "optimized_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 30.95258856631221,
+          "gamma": 0.002798593480044962,
+          "kernel": "rbf"
+        },
+        "metrics": {
+          "accuracy": 0.9824561403508771,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9761904761904762,
+          "f1_maligno": 0.9761904761904762,
+          "roc_auc": 0.996031746031746
+        },
+        "false_negatives": 1,
+        "false_positives": 1
+      }
+    },
+    {
+      "name": "roulette_onepoint",
+      "model_name": "SVM",
+      "ga_result": {
+        "model_name": "SVM",
+        "config": {
+          "population_size": 20,
+          "generations": 15,
+          "crossover_rate": 0.9,
+          "mutation_rate": 0.15,
+          "elitism": 2,
+          "tournament_size": 3,
+          "selection": "roulette",
+          "crossover": "one_point",
+          "seed": 42
+        },
+        "best_chromosome": {
+          "C": 5.305268922047367,
+          "gamma": 0.03363383896644277,
+          "kernel": "rbf"
+        },
+        "best_fitness": 0.9761533425314625,
+        "best_metrics": {
+          "recall": 0.9716500553709857,
+          "f1": 0.9786427262829165,
+          "roc_auc": 0.9957049142399617
+        },
+        "n_evaluations": 144,
+        "elapsed_seconds": 9.129726222992758,
+        "history": [
+          {
+            "generation": 0,
+            "best_fitness": 0.964673942732269,
+            "mean_fitness": 0.5492493507505402
+          },
+          {
+            "generation": 1,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.6182476973780862
+          },
+          {
+            "generation": 2,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.797746090369192
+          },
+          {
+            "generation": 3,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.8044611089201468
+          },
+          {
+            "generation": 4,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.7431863916312252
+          },
+          {
+            "generation": 5,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.7519223746675701
+          },
+          {
+            "generation": 6,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.9085080373716756
+          },
+          {
+            "generation": 7,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.7590738472592726
+          },
+          {
+            "generation": 8,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.7856344203783607
+          },
+          {
+            "generation": 9,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.8457405298651028
+          },
+          {
+            "generation": 10,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.8821720680468766
+          },
+          {
+            "generation": 11,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.8611878029989392
+          },
+          {
+            "generation": 12,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.9265350111431928
+          },
+          {
+            "generation": 13,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.7154447254787869
+          },
+          {
+            "generation": 14,
+            "best_fitness": 0.9761533425314625,
+            "mean_fitness": 0.8604222045214843
+          }
+        ]
+      },
+      "baseline_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 1.0,
+          "kernel": "rbf",
+          "gamma": "scale"
+        },
+        "metrics": {
+          "accuracy": 0.9824561403508771,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9761904761904762,
+          "f1_maligno": 0.9761904761904762,
+          "roc_auc": 0.9950396825396826
+        },
+        "false_negatives": 1,
+        "false_positives": 1
+      },
+      "optimized_test": {
+        "model_name": "SVM",
+        "params": {
+          "C": 5.305268922047367,
+          "gamma": 0.03363383896644277,
+          "kernel": "rbf"
+        },
+        "metrics": {
+          "accuracy": 0.9824561403508771,
+          "recall_maligno": 0.9761904761904762,
+          "precision_maligno": 0.9761904761904762,
+          "f1_maligno": 0.9761904761904762,
+          "roc_auc": 0.9970238095238095
+        },
+        "false_negatives": 1,
+        "false_positives": 1
+      }
+    }
+  ],
+  "tabela": [
+    {
+      "experimento": "baseline_ga",
+      "populacao": 20,
+      "geracoes": 15,
+      "taxa_mutacao": 0.15,
+      "selecao": "tournament",
+      "crossover": "uniform",
+      "best_fitness": 0.9726,
+      "best_params": {
+        "C": 2.606835083153345,
+        "gamma": 0.03363383896644277,
+        "kernel": "rbf"
+      },
+      "avaliacoes": 99,
+      "tempo_s": 9.2,
+      "acc_baseline": 0.9825,
+      "acc_otimizado": 0.9737,
+      "recall_baseline": 0.9762,
+      "recall_otimizado": 0.9762,
+      "f1_baseline": 0.9762,
+      "f1_otimizado": 0.9647,
+      "fn_baseline": 1,
+      "fn_otimizado": 1
+    },
+    {
+      "experimento": "high_mutation",
+      "populacao": 20,
+      "geracoes": 15,
+      "taxa_mutacao": 0.35,
+      "selecao": "tournament",
+      "crossover": "uniform",
+      "best_fitness": 0.9655,
+      "best_params": {
+        "C": 12.459139707606937,
+        "gamma": 0.005026348333842722,
+        "kernel": "rbf"
+      },
+      "avaliacoes": 154,
+      "tempo_s": 9.3,
+      "acc_baseline": 0.9825,
+      "acc_otimizado": 0.9825,
+      "recall_baseline": 0.9762,
+      "recall_otimizado": 0.9762,
+      "f1_baseline": 0.9762,
+      "f1_otimizado": 0.9762,
+      "fn_baseline": 1,
+      "fn_otimizado": 1
+    },
+    {
+      "experimento": "large_population",
+      "populacao": 40,
+      "geracoes": 10,
+      "taxa_mutacao": 0.15,
+      "selecao": "tournament",
+      "crossover": "uniform",
+      "best_fitness": 0.9655,
+      "best_params": {
+        "C": 30.95258856631221,
+        "gamma": 0.002798593480044962,
+        "kernel": "rbf"
+      },
+      "avaliacoes": 156,
+      "tempo_s": 9.6,
+      "acc_baseline": 0.9825,
+      "acc_otimizado": 0.9825,
+      "recall_baseline": 0.9762,
+      "recall_otimizado": 0.9762,
+      "f1_baseline": 0.9762,
+      "f1_otimizado": 0.9762,
+      "fn_baseline": 1,
+      "fn_otimizado": 1
+    },
+    {
+      "experimento": "roulette_onepoint",
+      "populacao": 20,
+      "geracoes": 15,
+      "taxa_mutacao": 0.15,
+      "selecao": "roulette",
+      "crossover": "one_point",
+      "best_fitness": 0.9762,
+      "best_params": {
+        "C": 5.305268922047367,
+        "gamma": 0.03363383896644277,
+        "kernel": "rbf"
+      },
+      "avaliacoes": 144,
+      "tempo_s": 9.1,
+      "acc_baseline": 0.9825,
+      "acc_otimizado": 0.9825,
+      "recall_baseline": 0.9762,
+      "recall_otimizado": 0.9762,
+      "f1_baseline": 0.9762,
+      "f1_otimizado": 0.9762,
+      "fn_baseline": 1,
+      "fn_otimizado": 1
+    }
+  ]
+}

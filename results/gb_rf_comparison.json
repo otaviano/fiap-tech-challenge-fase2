@@ -1,0 +1,37 @@
+{
+  "GradientBoosting": {
+    "baseline_cv_fitness": 0.9216,
+    "baseline_cv_recall": 0.9061,
+    "optimized_cv_fitness": 0.9655,
+    "best_params": {
+      "n_estimators": 294,
+      "learning_rate": 0.1551257008112644,
+      "max_depth": 3,
+      "subsample": 0.5394000990392291
+    },
+    "acc_base": 0.956140350877193,
+    "acc_opt": 0.956140350877193,
+    "recall_base": 0.9047619047619048,
+    "recall_opt": 0.9285714285714286,
+    "fn_base": 4,
+    "fn_opt": 3
+  },
+  "RandomForest": {
+    "baseline_cv_fitness": 0.9444,
+    "baseline_cv_recall": 0.9389,
+    "optimized_cv_fitness": 0.9494,
+    "best_params": {
+      "n_estimators": 50,
+      "max_depth": 7,
+      "min_samples_split": 3,
+      "min_samples_leaf": 1,
+      "max_features": 0.5
+    },
+    "acc_base": 0.956140350877193,
+    "acc_opt": 0.956140350877193,
+    "recall_base": 0.9285714285714286,
+    "recall_opt": 0.9285714285714286,
+    "fn_base": 3,
+    "fn_opt": 3
+  }
+}
