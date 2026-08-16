@@ -48,26 +48,39 @@ Detalhes completos em [`docs/arquitetura.md`](docs/arquitetura.md).
 
 ### 1. Ambiente
 
+Requer **Python ≥ 3.10** (validado até o 3.14).
+
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate            # Linux/Mac  (.venv\Scripts\activate no Windows)
 pip install -r requirements.txt
+pip install -e .                     # habilita o comando `diag-opt`
+```
+
+Para a API REST e os testes, instale também:
+
+```bash
+pip install -r requirements-serving.txt   # fastapi + uvicorn
+pip install pytest pytest-cov jupyter ipykernel
 ```
 
 ### 2. Rodar os experimentos do Algoritmo Genético
+
+```bash
+diag-opt experiments --model SVM        # 4 experimentos
+diag-opt optimize --model GradientBoosting
+diag-opt optimize --model SVM --population 8 --generations 3   # corrida curta, p/ demo
+```
+
+Sem instalar o pacote, use o script direto:
 
 ```bash
 PYTHONPATH=src python experiments/run_experiments.py --model SVM
 # resultados em results/experiments_summary.json
 ```
 
-Ou via CLI:
-
-```bash
-pip install -e .
-diag-opt experiments --model SVM        # 4 experimentos
-diag-opt optimize --model GradientBoosting
-```
+> O GA usa seed fixa: a mesma configuração reproduz o mesmo cromossomo e as mesmas
+> métricas entre máquinas e versões de Python.
 
 ### 3. Interpretação de um diagnóstico via LLM
 
@@ -85,13 +98,49 @@ diag-opt interpret --index 0
 > Se o LLM não estiver disponível, o sistema usa automaticamente um **fallback
 > determinístico** — a demonstração e os testes rodam sempre.
 
-### 4. Notebook de demonstração
+### 4. API REST de inferência
+
+```bash
+uvicorn diag_opt.serving.api:app --port 8000
+```
+
+Endpoints: `GET /health`, `POST /predict` e `POST /interpret`.
+Documentação interativa em <http://localhost:8000/docs>.
+
+O corpo das requisições é `{"values": {<nome_da_feature>: valor, ...}}` com as 30
+features do dataset. Para montar um caso real a partir do próprio dataset:
+
+```bash
+python -c "
+from diag_opt.data import load_dataset; import json
+print(json.dumps({'values': load_dataset().X.iloc[0].to_dict()}))" > caso.json
+
+curl -s -X POST localhost:8000/predict -H 'Content-Type: application/json' -d @caso.json
+# {"prediction":"maligno","probability_malignant":0.9127308585272944}
+
+curl -s -X POST localhost:8000/interpret -H 'Content-Type: application/json' -d @caso.json
+```
+
+O `/interpret` aceita ainda `top_k` (padrão `4`), que controla quantas features
+entram na explicação — ex.: `{"values": {...}, "top_k": 3}`.
+
+Os hiperparâmetros do modelo servido vêm do GA e são configuráveis por ambiente
+(`MODEL_C`, `MODEL_GAMMA`, `MODEL_KERNEL`).
+
+Via Docker:
+
+```bash
+docker build -t diag-opt .
+docker run -p 8000:8000 diag-opt
+```
+
+### 5. Notebook de demonstração
 
 ```bash
 jupyter notebook notebooks/demo.ipynb
 ```
 
-### 5. Testes
+### 6. Testes
 
 ```bash
 pytest --cov=diag_opt
