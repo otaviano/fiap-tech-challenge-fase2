@@ -32,7 +32,7 @@ class GAConfig:
     mutation_rate: float = 0.15
     elitism: int = 2
     tournament_size: int = 3
-    selection: str = "tournament"  # "tournament" | "roulette"
+    selection: str = "tournament"  # "tournament" | "roulette" | "rank"
     crossover: str = "uniform"  # "uniform" | "one_point"
     seed: int = 42
 

@@ -1,9 +1,10 @@
 """Definição e execução dos experimentos de algoritmo genético.
 
 O enunciado exige ao menos 3 experimentos com configurações diferentes
-(tamanho de população, taxa de mutação etc.). Definimos 4 configurações que
-variam população, taxa de mutação, método de seleção e tipo de crossover, para
-permitir uma análise comparativa rica no relatório.
+(tamanho de população, taxa de mutação etc.). Definimos 5 configurações que
+variam população, taxa de mutação, método de seleção (torneio, roleta e
+ranqueamento) e tipo de crossover, para permitir uma análise comparativa rica
+no relatório.
 """
 
 from __future__ import annotations
@@ -40,6 +41,13 @@ EXPERIMENTS: dict[str, GAConfig] = {
     "roulette_onepoint": GAConfig(
         population_size=20, generations=15, crossover_rate=0.9,
         mutation_rate=0.15, selection="roulette", crossover="one_point", seed=42,
+    ),
+    # 5) Seleção por ranqueamento: isola a variável "seleção" contra o
+    #    baseline_ga (mesma população, mutação e crossover; só a seleção muda),
+    #    permitindo medir o efeito da pressão seletiva invariante à escala.
+    "rank_selection": GAConfig(
+        population_size=20, generations=15, crossover_rate=0.8,
+        mutation_rate=0.15, selection="rank", crossover="uniform", seed=42,
     ),
 }
 

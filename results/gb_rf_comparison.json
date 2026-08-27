@@ -1,5 +1,11 @@
 {
   "GradientBoosting": {
+    "baseline_params": {
+      "n_estimators": 100,
+      "learning_rate": 0.1,
+      "max_depth": 3,
+      "subsample": 1.0
+    },
     "baseline_cv_fitness": 0.9216,
     "baseline_cv_recall": 0.9061,
     "optimized_cv_fitness": 0.9655,
@@ -9,29 +15,46 @@
       "max_depth": 3,
       "subsample": 0.5394000990392291
     },
+    "n_evaluations": 134,
+    "elapsed_seconds": 122.1,
     "acc_base": 0.956140350877193,
     "acc_opt": 0.956140350877193,
     "recall_base": 0.9047619047619048,
     "recall_opt": 0.9285714285714286,
     "fn_base": 4,
-    "fn_opt": 3
+    "fn_opt": 3,
+    "fp_base": 1,
+    "fp_opt": 2
   },
   "RandomForest": {
+    "baseline_params": {
+      "n_estimators": 100,
+      "max_depth": null,
+      "min_samples_split": 2,
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "bootstrap": true
+    },
     "baseline_cv_fitness": 0.9444,
     "baseline_cv_recall": 0.9389,
-    "optimized_cv_fitness": 0.9494,
+    "optimized_cv_fitness": 0.9497,
     "best_params": {
-      "n_estimators": 50,
-      "max_depth": 7,
+      "n_estimators": 96,
+      "max_depth": 26,
       "min_samples_split": 3,
-      "min_samples_leaf": 1,
-      "max_features": 0.5
+      "min_samples_leaf": 2,
+      "max_features": "log2",
+      "bootstrap": true
     },
+    "n_evaluations": 121,
+    "elapsed_seconds": 48.3,
     "acc_base": 0.956140350877193,
     "acc_opt": 0.956140350877193,
     "recall_base": 0.9285714285714286,
     "recall_opt": 0.9285714285714286,
     "fn_base": 3,
-    "fn_opt": 3
+    "fn_opt": 3,
+    "fp_base": 2,
+    "fp_opt": 2
   }
 }

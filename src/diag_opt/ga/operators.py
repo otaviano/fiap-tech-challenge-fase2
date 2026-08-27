@@ -49,9 +49,42 @@ def roulette_selection(
     return dict(population[-1])
 
 
+def rank_selection(
+    population: list[Chromosome],
+    fitnesses: list[float],
+    rng: random.Random,
+) -> Chromosome:
+    """Seleção por ranqueamento: probabilidade proporcional à **posição**.
+
+    Os indivíduos são ordenados do pior para o melhor e recebem pesos
+    ``1, 2, ..., N``; o sorteio é proporcional a esse peso, não ao valor bruto
+    do fitness.
+
+    Motivação prática neste projeto: nosso fitness é uma combinação de métricas
+    de classificação, então quase toda a população vive num intervalo estreito
+    (ex.: 0,90 a 0,97). Na roleta isso torna as probabilidades quase uniformes —
+    a pressão seletiva praticamente desaparece. O ranqueamento é **invariante à
+    escala** do fitness: o melhor indivíduo tem sempre peso ``N`` e o pior peso
+    ``1``, independentemente de a diferença entre eles ser 0,001 ou 0,5.
+    """
+    n = len(population)
+    if n == 0:
+        raise ValueError("População vazia")
+    order = sorted(range(n), key=lambda i: fitnesses[i])  # pior -> melhor
+    total = n * (n + 1) / 2  # soma dos pesos 1..N
+    pick = rng.uniform(0, total)
+    acc = 0.0
+    for rank, idx in enumerate(order, start=1):
+        acc += rank
+        if acc >= pick:
+            return dict(population[idx])
+    return dict(population[order[-1]])
+
+
 SELECTION = {
     "tournament": tournament_selection,
     "roulette": roulette_selection,
+    "rank": rank_selection,
 }
 
 

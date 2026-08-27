@@ -48,3 +48,18 @@ def test_clip_value_respeita_limites():
     assert clip_value(g, -5) == 2
     gc = GeneSpec("k", "cat", choices=("a", "b"))
     assert clip_value(gc, "z") == "a"  # inválido -> primeira opção
+
+
+def test_random_forest_tem_gene_bootstrap_booleano():
+    """O cromossomo do RF cobre os 6 hiperparâmetros do exemplo canônico."""
+    genes = {g.name: g for g in MODELS["RandomForest"].genes}
+    assert set(genes) == {
+        "n_estimators",
+        "max_features",
+        "max_depth",
+        "min_samples_split",
+        "min_samples_leaf",
+        "bootstrap",
+    }
+    assert genes["bootstrap"].kind == "cat"
+    assert set(genes["bootstrap"].choices) == {True, False}

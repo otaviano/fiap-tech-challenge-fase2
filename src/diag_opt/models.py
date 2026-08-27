@@ -120,6 +120,7 @@ MODELS: dict[str, ModelSpec] = {
             "min_samples_split": 2,
             "min_samples_leaf": 1,
             "max_features": "sqrt",
+            "bootstrap": True,
         },
         genes=(
             GeneSpec("n_estimators", "int", low=50, high=400),
@@ -127,6 +128,8 @@ MODELS: dict[str, ModelSpec] = {
             GeneSpec("min_samples_split", "int", low=2, high=20),
             GeneSpec("min_samples_leaf", "int", low=1, high=10),
             GeneSpec("max_features", "cat", choices=("sqrt", "log2", 0.5, 0.8)),
+            # Gene booleano: amostragem com reposição (bagging) ligada/desligada.
+            GeneSpec("bootstrap", "cat", choices=(True, False)),
         ),
     ),
     "GradientBoosting": ModelSpec(
