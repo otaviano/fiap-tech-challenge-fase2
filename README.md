@@ -20,14 +20,15 @@ natural para os profissionais de saúde.
 | Seleção, crossover e mutação | [`ga/operators.py`](src/diag_opt/ga/operators.py) |
 | Fitness por métricas (recall/F1/AUC) | [`ga/fitness.py`](src/diag_opt/ga/fitness.py) |
 | Comparação otimizado vs original | [`evaluation.py`](src/diag_opt/evaluation.py) |
-| ≥3 experimentos com configs diferentes | [`experiments.py`](src/diag_opt/experiments.py) (4 configs) |
+| ≥3 experimentos com configs diferentes | [`experiments.py`](src/diag_opt/experiments.py) (5 configs) |
 | Escalabilidade + monitoramento/logging | [`monitoring/`](src/diag_opt/monitoring/) + [`docs/escalabilidade.md`](docs/escalabilidade.md) |
 | Integração com LLM | [`src/diag_opt/llm/`](src/diag_opt/llm/) |
 | Prompt engineering | [`llm/prompts.py`](src/diag_opt/llm/prompts.py) |
 | Avaliação da qualidade das interpretações | [`llm/quality.py`](src/diag_opt/llm/quality.py) |
 | Documentação de arquitetura | [`docs/arquitetura.md`](docs/arquitetura.md) |
 | IaC (nuvem, pontuação extra) | [`infra/`](infra/) (Terraform) |
-| Testes automatizados | [`tests/`](tests/) (84% de cobertura) |
+| Testes automatizados | [`tests/`](tests/) (33 testes, 86% de cobertura) |
+| Logging da evolução do GA | [`monitoring/`](src/diag_opt/monitoring/) — evidência em [`results/logs/exemplo_execucao.log`](results/logs/exemplo_execucao.log) |
 
 ---
 
@@ -67,7 +68,7 @@ pip install pytest pytest-cov jupyter ipykernel
 ### 2. Rodar os experimentos do Algoritmo Genético
 
 ```bash
-diag-opt experiments --model SVM        # 4 experimentos
+diag-opt experiments --model SVM        # 5 experimentos
 diag-opt optimize --model GradientBoosting
 diag-opt optimize --model SVM --population 8 --generations 3   # corrida curta, p/ demo
 ```
@@ -77,6 +78,10 @@ Sem instalar o pacote, use o script direto:
 ```bash
 PYTHONPATH=src python experiments/run_experiments.py --model SVM
 # resultados em results/experiments_summary.json
+
+PYTHONPATH=src python experiments/run_gb_rf.py
+# comparativo baseline vs. otimizado dos modelos de árvore
+# resultados em results/gb_rf_comparison.json
 ```
 
 > O GA usa seed fixa: a mesma configuração reproduz o mesmo cromossomo e as mesmas

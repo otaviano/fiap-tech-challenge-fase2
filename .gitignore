@@ -24,6 +24,9 @@ env/
 
 # Resultados / logs (mantém a pasta, ignora artefatos pesados e transitórios)
 results/**/*.log
+# ...exceto o log de evidência de uma execução completa (requisito de
+# monitoramento/logging: mostrar a evolução do GA ao longo das gerações)
+!results/logs/exemplo_execucao.log
 results/**/*.png
 results/*.out
 results/run_*.json

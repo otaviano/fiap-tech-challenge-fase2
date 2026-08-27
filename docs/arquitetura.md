@@ -65,7 +65,7 @@ flowchart TD
 | GA — fitness | `diag_opt/ga/fitness.py` | Avaliação por validação cruzada + cache |
 | GA — motor | `diag_opt/ga/engine.py` | Loop geracional com elitismo e histórico |
 | Avaliação | `diag_opt/evaluation.py` | Métricas no test set, baseline vs otimizado |
-| Experimentos | `diag_opt/experiments.py` | 4 configurações de GA e execução |
+| Experimentos | `diag_opt/experiments.py` | 5 configurações de GA e execução |
 | LLM — cliente | `diag_opt/llm/client.py` | Acesso ao LLM local (OpenAI-compat) |
 | LLM — prompts | `diag_opt/llm/prompts.py` | Prompt engineering clínico |
 | LLM — interpretação | `diag_opt/llm/interpreter.py` | Contexto do paciente + texto (com fallback) |

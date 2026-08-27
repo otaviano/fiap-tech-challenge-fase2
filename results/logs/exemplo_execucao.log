@@ -1,0 +1,87 @@
+2026-08-27 20:10:34,076 | INFO    | diag_opt | Dataset carregado: (569, 30) | distribuição={'maligno': 212, 'benigno': 357}
+2026-08-27 20:10:36,207 | INFO    | diag_opt | [SVM_baseline_ga] geração 00 | best=0.9647 | mean=0.5492 | recall=0.9575
+2026-08-27 20:10:36,758 | INFO    | diag_opt | [SVM_baseline_ga] geração 01 | best=0.9681 | mean=0.8264 | recall=0.9621
+2026-08-27 20:10:36,973 | INFO    | diag_opt | [SVM_baseline_ga] geração 02 | best=0.9681 | mean=0.7675 | recall=0.9621
+2026-08-27 20:10:37,184 | INFO    | diag_opt | [SVM_baseline_ga] geração 03 | best=0.9681 | mean=0.8848 | recall=0.9621
+2026-08-27 20:10:37,240 | INFO    | diag_opt | [SVM_baseline_ga] geração 04 | best=0.9681 | mean=0.9228 | recall=0.9621
+2026-08-27 20:10:37,445 | INFO    | diag_opt | [SVM_baseline_ga] geração 05 | best=0.9681 | mean=0.8735 | recall=0.9621
+2026-08-27 20:10:37,605 | INFO    | diag_opt | [SVM_baseline_ga] geração 06 | best=0.9681 | mean=0.7766 | recall=0.9621
+2026-08-27 20:10:37,732 | INFO    | diag_opt | [SVM_baseline_ga] geração 07 | best=0.9681 | mean=0.8653 | recall=0.9621
+2026-08-27 20:10:37,953 | INFO    | diag_opt | [SVM_baseline_ga] geração 08 | best=0.9726 | mean=0.8662 | recall=0.9670
+2026-08-27 20:10:38,051 | INFO    | diag_opt | [SVM_baseline_ga] geração 09 | best=0.9726 | mean=0.8399 | recall=0.9670
+2026-08-27 20:10:38,217 | INFO    | diag_opt | [SVM_baseline_ga] geração 10 | best=0.9726 | mean=0.8103 | recall=0.9670
+2026-08-27 20:10:38,406 | INFO    | diag_opt | [SVM_baseline_ga] geração 11 | best=0.9726 | mean=0.8275 | recall=0.9670
+2026-08-27 20:10:38,575 | INFO    | diag_opt | [SVM_baseline_ga] geração 12 | best=0.9726 | mean=0.9165 | recall=0.9670
+2026-08-27 20:10:38,722 | INFO    | diag_opt | [SVM_baseline_ga] geração 13 | best=0.9726 | mean=0.8989 | recall=0.9670
+2026-08-27 20:10:38,795 | INFO    | diag_opt | [SVM_baseline_ga] geração 14 | best=0.9726 | mean=0.8635 | recall=0.9670
+2026-08-27 20:10:38,836 | INFO    | diag_opt | [SVM_baseline_ga] concluído | best_fitness=0.9726 | evals=99 | 4.7s
+2026-08-27 20:10:38,837 | DEBUG   | diag_opt | Registro salvo em results/run_SVM_baseline_ga.json
+2026-08-27 20:10:39,494 | INFO    | diag_opt | [SVM_high_mutation] geração 00 | best=0.9647 | mean=0.5492 | recall=0.9575
+2026-08-27 20:10:39,997 | INFO    | diag_opt | [SVM_high_mutation] geração 01 | best=0.9647 | mean=0.7704 | recall=0.9575
+2026-08-27 20:10:40,451 | INFO    | diag_opt | [SVM_high_mutation] geração 02 | best=0.9647 | mean=0.7303 | recall=0.9575
+2026-08-27 20:10:40,855 | INFO    | diag_opt | [SVM_high_mutation] geração 03 | best=0.9647 | mean=0.8457 | recall=0.9575
+2026-08-27 20:10:41,321 | INFO    | diag_opt | [SVM_high_mutation] geração 04 | best=0.9647 | mean=0.7862 | recall=0.9575
+2026-08-27 20:10:41,716 | INFO    | diag_opt | [SVM_high_mutation] geração 05 | best=0.9647 | mean=0.7839 | recall=0.9575
+2026-08-27 20:10:42,021 | INFO    | diag_opt | [SVM_high_mutation] geração 06 | best=0.9647 | mean=0.7328 | recall=0.9575
+2026-08-27 20:10:42,266 | INFO    | diag_opt | [SVM_high_mutation] geração 07 | best=0.9647 | mean=0.6588 | recall=0.9575
+2026-08-27 20:10:42,529 | INFO    | diag_opt | [SVM_high_mutation] geração 08 | best=0.9655 | mean=0.7287 | recall=0.9576
+2026-08-27 20:10:42,706 | INFO    | diag_opt | [SVM_high_mutation] geração 09 | best=0.9655 | mean=0.7662 | recall=0.9576
+2026-08-27 20:10:42,962 | INFO    | diag_opt | [SVM_high_mutation] geração 10 | best=0.9655 | mean=0.7195 | recall=0.9576
+2026-08-27 20:10:43,316 | INFO    | diag_opt | [SVM_high_mutation] geração 11 | best=0.9655 | mean=0.7250 | recall=0.9576
+2026-08-27 20:10:43,472 | INFO    | diag_opt | [SVM_high_mutation] geração 12 | best=0.9655 | mean=0.7412 | recall=0.9576
+2026-08-27 20:10:43,581 | INFO    | diag_opt | [SVM_high_mutation] geração 13 | best=0.9655 | mean=0.7387 | recall=0.9576
+2026-08-27 20:10:43,797 | INFO    | diag_opt | [SVM_high_mutation] geração 14 | best=0.9655 | mean=0.8387 | recall=0.9576
+2026-08-27 20:10:43,818 | INFO    | diag_opt | [SVM_high_mutation] concluído | best_fitness=0.9655 | evals=154 | 5.0s
+2026-08-27 20:10:43,819 | DEBUG   | diag_opt | Registro salvo em results/run_SVM_high_mutation.json
+2026-08-27 20:10:45,249 | INFO    | diag_opt | [SVM_large_population] geração 00 | best=0.9647 | mean=0.6421 | recall=0.9575
+2026-08-27 20:10:45,888 | INFO    | diag_opt | [SVM_large_population] geração 01 | best=0.9647 | mean=0.7805 | recall=0.9575
+2026-08-27 20:10:46,447 | INFO    | diag_opt | [SVM_large_population] geração 02 | best=0.9655 | mean=0.9158 | recall=0.9576
+2026-08-27 20:10:46,894 | INFO    | diag_opt | [SVM_large_population] geração 03 | best=0.9655 | mean=0.8964 | recall=0.9576
+2026-08-27 20:10:47,520 | INFO    | diag_opt | [SVM_large_population] geração 04 | best=0.9655 | mean=0.8403 | recall=0.9576
+2026-08-27 20:10:48,091 | INFO    | diag_opt | [SVM_large_population] geração 05 | best=0.9655 | mean=0.8464 | recall=0.9576
+2026-08-27 20:10:48,430 | INFO    | diag_opt | [SVM_large_population] geração 06 | best=0.9655 | mean=0.8839 | recall=0.9576
+2026-08-27 20:10:48,708 | INFO    | diag_opt | [SVM_large_population] geração 07 | best=0.9655 | mean=0.7781 | recall=0.9576
+2026-08-27 20:10:48,931 | INFO    | diag_opt | [SVM_large_population] geração 08 | best=0.9655 | mean=0.8825 | recall=0.9576
+2026-08-27 20:10:49,172 | INFO    | diag_opt | [SVM_large_population] geração 09 | best=0.9655 | mean=0.9303 | recall=0.9576
+2026-08-27 20:10:49,207 | INFO    | diag_opt | [SVM_large_population] concluído | best_fitness=0.9655 | evals=156 | 5.4s
+2026-08-27 20:10:49,208 | DEBUG   | diag_opt | Registro salvo em results/run_SVM_large_population.json
+2026-08-27 20:10:49,914 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 00 | best=0.9647 | mean=0.5492 | recall=0.9575
+2026-08-27 20:10:50,327 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 01 | best=0.9762 | mean=0.6182 | recall=0.9717
+2026-08-27 20:10:50,824 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 02 | best=0.9762 | mean=0.7977 | recall=0.9717
+2026-08-27 20:10:51,331 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 03 | best=0.9762 | mean=0.8045 | recall=0.9717
+2026-08-27 20:10:51,611 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 04 | best=0.9762 | mean=0.7432 | recall=0.9717
+2026-08-27 20:10:51,951 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 05 | best=0.9762 | mean=0.7519 | recall=0.9717
+2026-08-27 20:10:52,186 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 06 | best=0.9762 | mean=0.9085 | recall=0.9717
+2026-08-27 20:10:52,477 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 07 | best=0.9762 | mean=0.7591 | recall=0.9717
+2026-08-27 20:10:52,692 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 08 | best=0.9762 | mean=0.7856 | recall=0.9717
+2026-08-27 20:10:52,884 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 09 | best=0.9762 | mean=0.8457 | recall=0.9717
+2026-08-27 20:10:53,088 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 10 | best=0.9762 | mean=0.8822 | recall=0.9717
+2026-08-27 20:10:53,283 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 11 | best=0.9762 | mean=0.8612 | recall=0.9717
+2026-08-27 20:10:53,546 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 12 | best=0.9762 | mean=0.9265 | recall=0.9717
+2026-08-27 20:10:53,841 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 13 | best=0.9762 | mean=0.7154 | recall=0.9717
+2026-08-27 20:10:53,962 | INFO    | diag_opt | [SVM_roulette_onepoint] geração 14 | best=0.9762 | mean=0.8604 | recall=0.9717
+2026-08-27 20:10:53,991 | INFO    | diag_opt | [SVM_roulette_onepoint] concluído | best_fitness=0.9762 | evals=144 | 4.8s
+2026-08-27 20:10:53,991 | DEBUG   | diag_opt | Registro salvo em results/run_SVM_roulette_onepoint.json
+2026-08-27 20:10:54,663 | INFO    | diag_opt | [SVM_rank_selection] geração 00 | best=0.9647 | mean=0.5492 | recall=0.9575
+2026-08-27 20:10:55,162 | INFO    | diag_opt | [SVM_rank_selection] geração 01 | best=0.9655 | mean=0.6393 | recall=0.9576
+2026-08-27 20:10:55,629 | INFO    | diag_opt | [SVM_rank_selection] geração 02 | best=0.9655 | mean=0.7723 | recall=0.9576
+2026-08-27 20:10:55,915 | INFO    | diag_opt | [SVM_rank_selection] geração 03 | best=0.9655 | mean=0.8337 | recall=0.9576
+2026-08-27 20:10:56,265 | INFO    | diag_opt | [SVM_rank_selection] geração 04 | best=0.9655 | mean=0.8089 | recall=0.9576
+2026-08-27 20:10:56,444 | INFO    | diag_opt | [SVM_rank_selection] geração 05 | best=0.9655 | mean=0.8622 | recall=0.9576
+2026-08-27 20:10:56,545 | INFO    | diag_opt | [SVM_rank_selection] geração 06 | best=0.9655 | mean=0.9308 | recall=0.9576
+2026-08-27 20:10:56,691 | INFO    | diag_opt | [SVM_rank_selection] geração 07 | best=0.9655 | mean=0.9337 | recall=0.9576
+2026-08-27 20:10:56,835 | INFO    | diag_opt | [SVM_rank_selection] geração 08 | best=0.9655 | mean=0.8914 | recall=0.9576
+2026-08-27 20:10:57,158 | INFO    | diag_opt | [SVM_rank_selection] geração 09 | best=0.9655 | mean=0.8730 | recall=0.9576
+2026-08-27 20:10:57,292 | INFO    | diag_opt | [SVM_rank_selection] geração 10 | best=0.9655 | mean=0.8927 | recall=0.9576
+2026-08-27 20:10:57,490 | INFO    | diag_opt | [SVM_rank_selection] geração 11 | best=0.9655 | mean=0.8972 | recall=0.9576
+2026-08-27 20:10:57,660 | INFO    | diag_opt | [SVM_rank_selection] geração 12 | best=0.9655 | mean=0.8739 | recall=0.9576
+2026-08-27 20:10:57,843 | INFO    | diag_opt | [SVM_rank_selection] geração 13 | best=0.9655 | mean=0.9535 | recall=0.9576
+2026-08-27 20:10:58,295 | INFO    | diag_opt | [SVM_rank_selection] geração 14 | best=0.9655 | mean=0.6958 | recall=0.9576
+2026-08-27 20:10:58,331 | INFO    | diag_opt | [SVM_rank_selection] concluído | best_fitness=0.9655 | evals=113 | 4.3s
+2026-08-27 20:10:58,331 | DEBUG   | diag_opt | Registro salvo em results/run_SVM_rank_selection.json
+2026-08-27 20:10:58,332 | INFO    | diag_opt | Resumo consolidado salvo em results/experiments_summary.json
+2026-08-27 20:11:13,880 | INFO    | diag_opt | Otimizando GradientBoosting via GA...
+2026-08-27 20:13:17,997 | INFO    | diag_opt | GradientBoosting | fitness CV 0.9216 -> 0.9655 | FN 4 -> 3 | FP 1 -> 2
+2026-08-27 20:13:17,998 | INFO    | diag_opt | Otimizando RandomForest via GA...
+2026-08-27 20:14:06,959 | INFO    | diag_opt | RandomForest | fitness CV 0.9444 -> 0.9497 | FN 3 -> 3 | FP 2 -> 2
+2026-08-27 20:14:06,959 | INFO    | diag_opt | Comparativo salvo em results/gb_rf_comparison.json
