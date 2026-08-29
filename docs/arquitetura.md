@@ -86,7 +86,7 @@ flowchart TD
    clínica com a Fase 1 — falso negativo é o erro mais grave.
 4. **Cache de fitness**: combinações repetidas de hiperparâmetros não são
    reavaliadas, reduzindo drasticamente o custo computacional.
-5. **LLM local por padrão** (llama.cpp/qwen3): privacidade dos dados do paciente
+5. **LLM local por padrão** (llama.cpp + Qwen3 4B Instruct, `Qwen3-4B-Instruct-2507-Q4_K_M.gguf`): privacidade dos dados do paciente
    (nenhum dado sai da rede local) e custo zero de API. O endpoint é
    configurável por variável de ambiente para qualquer servidor OpenAI-compat.
 6. **Fallback determinístico** na interpretação: garante que demonstração,

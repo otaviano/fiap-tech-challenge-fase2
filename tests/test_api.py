@@ -20,6 +20,16 @@ def test_health(client):
     assert resp.json()["status"] == "ok"
 
 
+def test_health_identifica_o_modelo_servido(client):
+    """O /health precisa dizer QUAL configuração do GA está no ar."""
+    body = client.get("/health").json()
+    assert body["model"]["estimator"] == "SVM"
+    params = body["model"]["params"]
+    assert set(params) == {"C", "gamma", "kernel"}
+    assert params["kernel"] == "rbf"
+    assert body["llm"]["model"]  # identifica o LLM configurado
+
+
 def test_predict(client, dataset):
     row = dataset.X_test.iloc[0].to_dict()
     resp = client.post("/predict", json={"values": row})

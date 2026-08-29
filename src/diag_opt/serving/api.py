@@ -4,7 +4,7 @@ Serviço *stateless* que expõe o modelo de diagnóstico e a interpretação cl�
 por LLM. É o container escalado horizontalmente pela IaC em [`infra/`](../../../infra).
 
 Endpoints:
-    GET  /health      -> checagem de saúde (usada pelo load balancer)
+    GET  /health      -> saúde + qual configuração do modelo está servindo
     POST /predict     -> predição a partir das 30 features
     POST /interpret   -> predição + interpretação clínica em linguagem natural
 
@@ -63,8 +63,25 @@ class InterpretRequest(BaseModel):
 
 
 @app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+def health() -> dict[str, Any]:
+    """Saúde do serviço + identificação do modelo servido.
+
+    Além do ``status`` usado pelo load balancer, devolve a configuração em uso —
+    útil para auditar, em produção, **qual** dos cromossomos encontrados pelo GA
+    está de fato no ar, sem precisar inspecionar o código ou o container.
+    """
+    return {
+        "status": "ok",
+        "model": {
+            "estimator": "SVM",
+            "params": _DEFAULT_SVM_PARAMS,
+            "origem": "GA — experimento roulette_onepoint (maior fitness de CV)",
+        },
+        "llm": {
+            "base_url": os.getenv("LLM_BASE_URL", "http://localhost:8080/v1"),
+            "model": os.getenv("LLM_MODEL", "qwen3"),
+        },
+    }
 
 
 def _to_frame(values: dict[str, float], feature_names: list[str]) -> pd.DataFrame:

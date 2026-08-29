@@ -90,8 +90,12 @@ PYTHONPATH=src python experiments/run_gb_rf.py
 ### 3. Interpretação de um diagnóstico via LLM
 
 O sistema usa, por padrão, um **LLM local** compatível com a API da OpenAI
-(ex.: `llama-server`/llama.cpp, Ollama, LM Studio). Configure via variáveis de
-ambiente (ou deixe o padrão):
+(ex.: `llama-server`/llama.cpp, Ollama, LM Studio). O modelo usado no
+desenvolvimento e na demonstração foi o **Qwen3 4B Instruct**
+(`Qwen3-4B-Instruct-2507-Q4_K_M.gguf`, quantização Q4_K_M) servido por
+llama.cpp — leve o bastante para rodar na máquina local, o que mantém os dados
+de paciente fora da rede. Configure via variáveis de ambiente (ou deixe o
+padrão):
 
 ```bash
 export LLM_BASE_URL=http://localhost:8080/v1   # padrão
@@ -112,19 +116,38 @@ uvicorn diag_opt.serving.api:app --port 8000
 Endpoints: `GET /health`, `POST /predict` e `POST /interpret`.
 Documentação interativa em <http://localhost:8000/docs>.
 
+O `/health` identifica qual configuração está servindo — útil para auditar em
+produção qual cromossomo do GA está no ar:
+
+```bash
+curl -s localhost:8000/health
+# {"status":"ok",
+#  "model":{"estimator":"SVM","params":{"C":5.31,"gamma":0.0336,"kernel":"rbf"},
+#           "origem":"GA — experimento roulette_onepoint (maior fitness de CV)"},
+#  "llm":{"base_url":"http://localhost:8080/v1","model":"qwen3"}}
+```
+
 O corpo das requisições é `{"values": {<nome_da_feature>: valor, ...}}` com as 30
-features do dataset. Para montar um caso real a partir do próprio dataset:
+features do dataset. Para montar um caso real a partir do próprio dataset
+(**com o venv ativado** — senão o `import` falha e gera um arquivo vazio):
 
 ```bash
 python -c "
 from diag_opt.data import load_dataset; import json
-print(json.dumps({'values': load_dataset().X.iloc[0].to_dict()}))" > caso.json
+print(json.dumps({'values': load_dataset().X.iloc[0].to_dict()}))" > /tmp/caso.json
 
-curl -s -X POST localhost:8000/predict -H 'Content-Type: application/json' -d @caso.json
+# confira que o arquivo não saiu vazio antes de chamar a API
+test -s /tmp/caso.json && echo "caso gerado" || echo "FALHOU — o venv está ativado?"
+
+curl -s -X POST localhost:8000/predict -H 'Content-Type: application/json' -d @/tmp/caso.json
 # {"prediction":"maligno","probability_malignant":0.9127308585272944}
 
-curl -s -X POST localhost:8000/interpret -H 'Content-Type: application/json' -d @caso.json
+curl -s -X POST localhost:8000/interpret -H 'Content-Type: application/json' -d @/tmp/caso.json
 ```
+
+> Se o `curl` responder `option -d: error encountered when reading a file`, o
+> arquivo não existe no caminho informado — gere-o antes, no mesmo caminho que
+> o `-d @` aponta.
 
 O `/interpret` aceita ainda `top_k` (padrão `4`), que controla quantas features
 entram na explicação — ex.: `{"values": {...}, "top_k": 3}`.

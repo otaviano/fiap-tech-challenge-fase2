@@ -43,8 +43,11 @@ infra/**/.terraform.lock.hcl
 
 # Segredos
 .env
+.env.*
 *.key
 *.pem
+*secret*.json
+*credential*.json
 
 # SO / editores
 .DS_Store

@@ -198,6 +198,12 @@ fica ligeiramente **abaixo** (um falso positivo a mais, −0,9 pp de accuracy,
 `large_population` — um caso clássico de pequena diferença de CV que não se
 traduz em ganho no conjunto de teste (114 amostras: 1 erro = 0,88 pp).
 
+Vale destacar o gene categórico: o GA tinha `kernel ∈ {rbf, poly, sigmoid}`
+disponível e escolheu **`rbf` nas cinco configurações**, sem exceção. Ou seja, a
+busca não validou apenas os valores de `C` e `gamma` — validou também a decisão
+estrutural de qual família de fronteira de decisão usar, que a Fase 1 havia
+tomado pelo default do scikit-learn.
+
 O recall do maligno — a métrica que priorizamos — e o número de falsos negativos
 (1) permanecem inalterados em **todas** as configurações. A conclusão é que o
 SVM com hiperparâmetros *default* já estava praticamente no ótimo para este
@@ -297,11 +303,19 @@ reportar.
 
 ### 4.1 Abordagem e decisão de arquitetura
 
-Utilizamos um **LLM local open-source** (`qwen3` servido via `llama.cpp`, API
-compatível com OpenAI). A decisão é central e clínica: **dados de pacientes não
-saem da rede local**, alinhado à **LGPD**, com custo de API zero. O endpoint é
-plugável por variável de ambiente (`LLM_BASE_URL`, `LLM_MODEL`), aceitando
-Ollama, LM Studio, vLLM etc.
+Utilizamos um **LLM local open-source**: **Qwen3 4B Instruct**, no arquivo
+`Qwen3-4B-Instruct-2507-Q4_K_M.gguf` (4 bilhões de parâmetros, quantização
+Q4_K_M), servido por [`llama.cpp`](https://github.com/ggml-org/llama.cpp) com
+API compatível com a da OpenAI.
+
+A decisão é central e clínica: **dados de pacientes não saem da rede local**,
+alinhado à **LGPD**, com custo de API zero. A quantização em 4 bits é o que
+torna isso viável — o modelo roda em CPU ou em uma GPU modesta, sem exigir
+infraestrutura dedicada, que é o cenário realista de um hospital.
+
+O endpoint é plugável por variável de ambiente (`LLM_BASE_URL`, `LLM_MODEL`),
+aceitando Ollama, LM Studio, vLLM etc. — trocar de modelo não exige mudança de
+código.
 
 Fluxo de interpretação ([`llm/interpreter.py`](src/diag_opt/llm/interpreter.py)):
 
@@ -378,6 +392,11 @@ construção.
 - **Escalabilidade** ([`docs/escalabilidade.md`](docs/escalabilidade.md)): dois
   workloads distintos — otimização (batch, paralelizável por indivíduo) e
   inferência (online, *stateless*, auto-scaling horizontal).
+- **Rastreabilidade do que está no ar**: o endpoint `GET /health` devolve, além
+  do status usado pelo load balancer, a configuração do modelo servido (`SVM`,
+  `C=5,31`, `γ=0,0336`, `rbf`, com o experimento de origem) e o LLM configurado
+  — permitindo auditar qual cromossomo do GA está em produção sem inspecionar o
+  código ou o container.
 - **Nuvem/IaC** ([`infra/`](infra/)): Terraform provisionando ECS Fargate com
   **auto-scaling** por CPU e por requisições, ALB e CloudWatch — a
   materialização da arquitetura de escalabilidade (pontuação extra do enunciado).
