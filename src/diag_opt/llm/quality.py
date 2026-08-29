@@ -24,6 +24,10 @@ _SAFETY_TERMS = ("apoio", "não substitui", "decisão", "médico", "profissional
 _PRUDENT_TERMS = ("sugere", "indica", "compatível", "probab", "%")
 # Afirmações categóricas indesejadas em contexto de apoio ao diagnóstico.
 _FORBIDDEN = ("diagnóstico definitivo", "com certeza", "definitivamente", "garantido")
+# Negadores que INVERTEM o sentido de um termo proibido na mesma sentença:
+# "não constitui diagnóstico definitivo" é prudência, não afirmação categórica.
+_NEGATIONS = ("não", "nao", "nunca", "jamais")
+_SENTENCE_ENDS = ".;!?\n"
 
 
 @dataclass
@@ -36,6 +40,24 @@ class QualityReport:
         return self.score >= threshold
 
 
+def _has_categorical_claim(low: str) -> bool:
+    """Detecta afirmação categórica de fato, respeitando negações.
+
+    Uma busca por substring simples reprova o texto correto: o disclaimer
+    recomendado — "não constitui diagnóstico definitivo" — contém o termo
+    proibido, mas exprime exatamente a prudência que queremos. Aqui, cada
+    ocorrência só conta como violação se **não** houver negador entre o início
+    da sentença e o termo.
+    """
+    for term in _FORBIDDEN:
+        for match in re.finditer(re.escape(term), low):
+            start = max(low.rfind(end, 0, match.start()) for end in _SENTENCE_ENDS)
+            sentence_head = low[start + 1 : match.start()]
+            if not any(neg in sentence_head for neg in _NEGATIONS):
+                return True
+    return False
+
+
 def evaluate_interpretation(text: str, context: dict[str, Any]) -> QualityReport:
     """Aplica os critérios objetivos e retorna um score de conformidade."""
     low = text.lower()
@@ -43,7 +65,7 @@ def evaluate_interpretation(text: str, context: dict[str, Any]) -> QualityReport
     has_structure = sum(sec in low for sec in _EXPECTED_SECTIONS) >= 3
     has_safety = any(term in low for term in _SAFETY_TERMS)
     is_prudent = any(term in low for term in _PRUDENT_TERMS)
-    no_forbidden = not any(term in low for term in _FORBIDDEN)
+    no_forbidden = not _has_categorical_claim(low)
 
     cited = sum(1 for f in context.get("top_features", []) if f["name"].lower() in low)
     grounded = cited >= max(1, len(context.get("top_features", [])) // 2)

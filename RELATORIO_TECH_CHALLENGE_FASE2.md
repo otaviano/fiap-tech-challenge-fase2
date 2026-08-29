@@ -358,16 +358,38 @@ score de conformidade reprodutível — útil para comparar prompts:
 | Estrutura | presença das seções esperadas |
 | Segurança clínica | disclaimer de "apoio, não diagnóstico" |
 | Prudência | linguagem probabilística |
-| Sem afirmação categórica | ausência de termos como "diagnóstico definitivo" |
+| Sem afirmação categórica | ausência de termos como "diagnóstico definitivo", **respeitando negações** |
 | Grounding | cita as características que embasaram a predição |
 | Idioma/tamanho | PT-BR e extensão adequada |
 
-Na avaliação de casos reais, o LLM local atingiu **score ~0,86**. O único
-critério ocasionalmente reprovado foi *sem afirmação categórica* — o modelo, por
-vezes, é assertivo demais ("prediz com alta confiança"). Esse achado, capturado
-automaticamente, orienta o refinamento do prompt e demonstra o valor de uma
-avaliação objetiva. O fallback determinístico atinge score ≥ 0,85 por
-construção.
+Avaliando **8 casos reais** do test set (4 malignos e 4 benignos), o LLM local
+atingiu **score 1,00 em todos** — nenhuma reprovação em nenhum critério. O
+fallback determinístico também atinge 1,00, por construção.
+
+**Um falso positivo que o próprio avaliador nos ensinou.** Numa versão anterior,
+o critério *sem afirmação categórica* reprovava com frequência, e a leitura
+inicial foi de que o modelo era assertivo demais. Investigando o texto reprovado,
+o trecho responsável era:
+
+> "Essa saída é um apoio à decisão clínica e **não constitui diagnóstico
+> definitivo**."
+
+Ou seja: o disclaimer **correto** — exatamente a prudência exigida — continha a
+substring proibida. A verificação por *substring* não enxergava a negação e
+penalizava o modelo por acertar. A correção
+([`_has_categorical_claim`](src/diag_opt/llm/quality.py)) passou a considerar
+apenas ocorrências **sem negador na mesma sentença**, distinguindo "não constitui
+diagnóstico definitivo" (prudente) de "trata-se de um diagnóstico definitivo"
+(categórico). Dois testes cobrem os dois lados.
+
+**Limitação honesta desta métrica.** Com o prompt atual, todos os casos atingem a
+nota máxima — o que significa que o score **não discrimina qualidade
+informativa**. Ele é um *guarda-corpo*: mede conformidade com garantias mínimas
+de segurança clínica (estrutura, disclaimer, linguagem probabilística, grounding
+nos dados do caso). Seu valor está em **detectar regressão** — se alguém alterar
+o prompt ou trocar o modelo e uma dessas garantias cair, o score acusa
+imediatamente. Avaliar elegância ou utilidade clínica do texto exigiria
+julgamento humano ou um LLM-juiz, fora do escopo desta fase.
 
 ---
 

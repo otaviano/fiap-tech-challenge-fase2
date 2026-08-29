@@ -50,3 +50,29 @@ def test_quality_report_do_fallback_e_alto(dataset):
     assert report.passed(threshold=0.8)
     assert report.checks["seguranca_clinica"]
     assert report.checks["sem_afirmacao_categorica"]
+
+
+def test_negacao_nao_conta_como_afirmacao_categorica():
+    """O disclaimer correto contém o termo proibido — não pode ser reprovado."""
+    from diag_opt.llm.quality import _has_categorical_claim
+
+    prudentes = [
+        "essa saída é um apoio e não constitui diagnóstico definitivo.",
+        "não é possível afirmar com certeza sem biópsia.",
+        "o resultado nunca deve ser tratado como definitivamente conclusivo.",
+    ]
+    for texto in prudentes:
+        assert not _has_categorical_claim(texto), texto
+
+
+def test_afirmacao_categorica_real_e_detectada():
+    from diag_opt.llm.quality import _has_categorical_claim
+
+    categoricas = [
+        "este é um diagnóstico definitivo de carcinoma.",
+        "com certeza o tumor é maligno.",
+        "o resultado é garantido.",
+        "não há dúvida no exame. trata-se de um diagnóstico definitivo.",
+    ]
+    for texto in categoricas:
+        assert _has_categorical_claim(texto), texto
