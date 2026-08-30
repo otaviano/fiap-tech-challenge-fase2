@@ -3,6 +3,10 @@
 > **FIAP Postech — IA para Devs**
 > Projeto 1 — Otimização via Algoritmos Genéticos + Interpretação com LLM
 
+**[▶ Vídeo de demonstração (≤ 15 min)](https://youtu.be/z1GaoESr23E)** ·
+**[Documento de entrega (PDF)](ENTREGA_TECH_CHALLENGE_FASE2.pdf)** ·
+**[Relatório técnico](RELATORIO_TECH_CHALLENGE_FASE2.md)**
+
 Continuação do [Tech Challenge Fase 1](https://github.com/otaviano/fiap-tech-challenge-fase1)
 (diagnóstico de câncer de mama, nota 85/90). Nesta fase, otimizamos os
 **hiperparâmetros** dos modelos de diagnóstico via **Algoritmo Genético** e
@@ -186,6 +190,7 @@ para qualquer servidor OpenAI-compat. Detalhes em [`docs/seguranca.md`](docs/seg
 
 ## Documentação
 
+- [Documento de entrega](docs/entrega-fase2.md) — links, checklist e mapeamento dos requisitos
 - [Relatório técnico](RELATORIO_TECH_CHALLENGE_FASE2.md)
 - [Arquitetura](docs/arquitetura.md)
 - [Escalabilidade e monitoramento](docs/escalabilidade.md)
